@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ict_hub_flutter/home_screen.dart';
+import 'package:ict_hub_flutter/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +11,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: HomeScreen(),
+      theme: ThemeData(
+        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: "Cairo",
+      ),
+      routerConfig: AppRouter.appRouter,
     );
   }
 }
