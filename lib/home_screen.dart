@@ -224,6 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       ElevatedButton(
                         onPressed: () {
+                          // context.push("/${Routes.imagePickerScreen}");
                           context.pushNamed(Routes.imagePickerScreen);
                           // Navigator.push(
                           //   context,
@@ -254,7 +255,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text("Click on !!"),
                         ),
                       ),
-                      MaterialButton(onPressed: () {}, child: Text("Press")),
+                      MaterialButton(
+                        onPressed: () {
+                          context.pushNamed(
+                            Routes.productScreen,
+                            queryParameters: {"title": "Product Screen For E"},
+                          );
+                        },
+                        child: Text("Press"),
+                      ),
                       TextButton(onPressed: () {}, child: Text("data")),
                       IconButton(onPressed: () {}, icon: Icon(Icons.ac_unit)),
                       Text(controller.text),
