@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ict_hub_flutter/app_router.dart';
-import 'package:ict_hub_flutter/app_theme.dart';
-import 'package:ict_hub_flutter/theme_cubit.dart';
-import 'package:ict_hub_flutter/theme_state.dart';
+import 'package:ict_hub_flutter/app/app_router.dart';
+import 'package:ict_hub_flutter/core/cubit/theme/theme_cubit.dart';
+import 'package:ict_hub_flutter/core/cubit/theme/theme_state.dart';
+import 'package:ict_hub_flutter/core/utils/app_theme.dart';
 
 void main() {
   runApp(const MyApp());

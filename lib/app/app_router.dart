@@ -1,9 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ict_hub_flutter/home_screen.dart';
-import 'package:ict_hub_flutter/image_picker_screen.dart';
-import 'package:ict_hub_flutter/main_layout.dart';
-import 'package:ict_hub_flutter/product_screen.dart';
-import 'package:ict_hub_flutter/routes.dart';
+import 'package:ict_hub_flutter/presentation/screens/home_screen.dart';
+import 'package:ict_hub_flutter/presentation/screens/image_picker_screen.dart';
+import 'package:ict_hub_flutter/presentation/layout/main_layout.dart';
+import 'package:ict_hub_flutter/presentation/cubit/products/product_cubit.dart';
+import 'package:ict_hub_flutter/presentation/screens/product_screen.dart';
+import 'package:ict_hub_flutter/app/routes.dart';
 
 class AppRouter {
   static final GoRouter appRouter = GoRouter(
@@ -35,7 +37,10 @@ class AppRouter {
         name: Routes.productScreen,
         builder: (context, state) {
           final String? title = state.uri.queryParameters['title'];
-          return ProductScreen(title: title ?? "");
+          return BlocProvider(
+            create: (context) => ProductCubit(),
+            child: ProductScreen(title: title ?? ""),
+          );
         },
       ),
     ],

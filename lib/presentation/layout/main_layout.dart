@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ict_hub_flutter/cart_screen.dart';
-import 'package:ict_hub_flutter/favorit_screen.dart';
-import 'package:ict_hub_flutter/home_screen.dart';
-import 'package:ict_hub_flutter/image_picker_screen.dart';
+import 'package:ict_hub_flutter/presentation/screens/cart_screen.dart';
+import 'package:ict_hub_flutter/presentation/screens/favorit_screen.dart';
+import 'package:ict_hub_flutter/presentation/screens/home_screen.dart';
+import 'package:ict_hub_flutter/presentation/screens/image_picker_screen.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});

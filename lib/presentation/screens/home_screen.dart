@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ict_hub_flutter/app_assets.dart';
-import 'package:ict_hub_flutter/custom_text_filed_widget.dart';
-import 'package:ict_hub_flutter/routes.dart';
+import 'package:ict_hub_flutter/app/routes.dart';
+import 'package:ict_hub_flutter/core/utils/app_assets.dart';
+import 'package:ict_hub_flutter/core/widget/custom_text_filed_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
