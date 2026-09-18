@@ -17,3 +17,19 @@ class ProductsFailureState extends ProductState {
 
   ProductsFailureState({required this.message});
 }
+
+class ProductsDetailsLoadingstate extends ProductsSuccessState {
+  ProductsDetailsLoadingstate({required super.response});
+}
+
+class ProductsDetailsSuccessState extends ProductsSuccessState {
+  ProductsDetailsSuccessState({required super.response, required this.details});
+
+  final ProductModel details;
+}
+
+class ProductsDetailsFailureState extends ProductsSuccessState {
+  ProductsDetailsFailureState({required super.response, required this.message});
+
+  final String message;
+}

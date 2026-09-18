@@ -4,8 +4,11 @@ import 'package:ict_hub_flutter/app/app_router.dart';
 import 'package:ict_hub_flutter/core/cubit/theme/theme_cubit.dart';
 import 'package:ict_hub_flutter/core/cubit/theme/theme_state.dart';
 import 'package:ict_hub_flutter/core/utils/app_theme.dart';
+import 'package:ict_hub_flutter/injection_container.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await initDependencies();
   runApp(const MyApp());
 }
 
