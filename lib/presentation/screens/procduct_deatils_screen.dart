@@ -68,10 +68,9 @@ class _ProcductDeatilsScreenState extends State<ProcductDeatilsScreen> {
                           ),
                         ),
                       ),
-
                       SizedBox(
                         width: double.infinity,
-                        height: 55,
+                        height: 50,
                         child: FilledButton(
                           style: FilledButton.styleFrom(
                             shape: RoundedRectangleBorder(
