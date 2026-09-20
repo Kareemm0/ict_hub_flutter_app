@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ict_hub_flutter/injection_container.dart';
+import 'package:ict_hub_flutter/presentation/cubit/categories/category_cubit.dart';
 import 'package:ict_hub_flutter/presentation/screens/cart_screen.dart';
 import 'package:ict_hub_flutter/presentation/screens/favorit_screen.dart';
 import 'package:ict_hub_flutter/presentation/screens/home_screen.dart';
@@ -17,7 +20,10 @@ class _MainLayoutState extends State<MainLayout> {
   List<Widget> screen = [
     HomeScreen(),
     ImagePickerScreen(),
-    CartScreen(),
+    BlocProvider(
+      create: (context) => getIt<CategoryCubit>(),
+      child: CartScreen(),
+    ),
     FavoritScreen(),
   ];
   @override

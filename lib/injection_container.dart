@@ -3,13 +3,18 @@ import 'package:get_it/get_it.dart';
 import 'package:ict_hub_flutter/core/local_storage/base_local_storage.dart';
 import 'package:ict_hub_flutter/core/network/api/api_consumer.dart';
 import 'package:ict_hub_flutter/core/network/api/endpoints.dart';
+import 'package:ict_hub_flutter/data/data_source/abstarct/category_data_source.dart';
 import 'package:ict_hub_flutter/data/data_source/abstarct/product_deatils_data_source.dart';
+import 'package:ict_hub_flutter/data/data_source/impl/category_data_source_impl.dart';
 import 'package:ict_hub_flutter/data/data_source/impl/product_details_data_source_impl.dart';
 import 'package:ict_hub_flutter/data/external/dio/dio_consumer.dart';
 import 'package:ict_hub_flutter/data/external/dio/interceptor.dart';
 import 'package:ict_hub_flutter/data/external/local_storage/shared_pref_impl.dart';
+import 'package:ict_hub_flutter/data/repos/cateogries_repo_impl.dart';
 import 'package:ict_hub_flutter/data/repos/product_details_repo_impl.dart';
+import 'package:ict_hub_flutter/domain/repos/category_repo.dart';
 import 'package:ict_hub_flutter/domain/repos/product_details_repo.dart';
+import 'package:ict_hub_flutter/presentation/cubit/categories/category_cubit.dart';
 import 'package:ict_hub_flutter/presentation/cubit/products/product_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -47,11 +52,19 @@ abstract class InjectionHelper {
     getIt.registerSingleton<ProductDeatilsDataSource>(
       ProductDetailsDataSourceImpl(dio: getIt<ApiConsumer>()),
     );
+
+    getIt.registerSingleton<CategoryDataSource>(
+      CategoryDataSourceImpl(apiConsumer: getIt<ApiConsumer>()),
+    );
   }
 
   static void injectRepos() {
     getIt.registerSingleton<ProductDetailsRepo>(
       ProductDetailsRepoImpl(dataSource: getIt<ProductDeatilsDataSource>()),
+    );
+
+    getIt.registerSingleton<CategoryRepo>(
+      CateogriesRepoImpl(dataSource: getIt<CategoryDataSource>()),
     );
   }
 
@@ -59,5 +72,8 @@ abstract class InjectionHelper {
     getIt.registerFactory<ProductCubit>(() {
       return ProductCubit(repo: getIt<ProductDetailsRepo>());
     });
+    getIt.registerFactory<CategoryCubit>(
+      () => CategoryCubit(repo: getIt<CategoryRepo>()),
+    );
   }
 }
