@@ -1,36 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:ict_hub_flutter/presentation/screens/cart_screen.dart';
-import 'package:ict_hub_flutter/presentation/screens/favorit_screen.dart';
-import 'package:ict_hub_flutter/presentation/screens/home_screen.dart';
-import 'package:ict_hub_flutter/presentation/screens/image_picker_screen.dart';
+import 'package:go_router/go_router.dart';
 
-class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+class MainLayout extends StatelessWidget {
+  const MainLayout({super.key, required this.navigationShell});
 
-  @override
-  State<MainLayout> createState() => _MainLayoutState();
-}
+  final StatefulNavigationShell navigationShell;
 
-class _MainLayoutState extends State<MainLayout> {
-  int currentIndex = 0;
-
-  List<Widget> screen = [
-    HomeScreen(),
-    ImagePickerScreen(),
-    CartScreen(),
-    FavoritScreen(),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 20,
         selectedItemColor: Colors.redAccent,
-        currentIndex: currentIndex,
+        currentIndex: navigationShell.currentIndex,
         onTap: (value) {
-          setState(() {
-            currentIndex = value;
-          });
+          navigationShell.goBranch(value);
         },
         type: BottomNavigationBarType.fixed,
         items: [
@@ -46,7 +30,7 @@ class _MainLayoutState extends State<MainLayout> {
           ),
         ],
       ),
-      body: screen[currentIndex],
+      body: navigationShell,
     );
   }
 }
